@@ -20,6 +20,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.andtinder.model.CardModel;
+import com.andtinder.model.Orientations;
+import com.andtinder.view.CardContainer;
 import com.parse.Parse;
 import com.parse.ParseUser;
 
@@ -45,6 +48,8 @@ public class HomePage extends Activity {
     private TextView mytext,yelptext,locationtext;
     private Button refresh;
     private ParseUser myuser;
+    private CardContainer mCardContainer;
+    private double lon,lat;
     private String hello;
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -55,15 +60,16 @@ public class HomePage extends Activity {
         setContentView(R.layout.activity_home_page);
         Parse.initialize(this, "n2koKwQHYtQGedP92Uq6jEpHqMw7WByd6F11yMVh", "VObFmhueGhCXuNqeKZlkgeFkCB5Vw01gk1MkQNM9");
         mytext = (TextView)findViewById(R.id.textView);
-        yelptext = (TextView)findViewById(R.id.textView);
-        locationtext = (TextView)findViewById(R.id.textView3);
-
+        yelptext = (TextView)findViewById(R.id.textView3);
+        locationtext = (TextView)findViewById(R.id.textView2);
+        doLocation();
         refresh = (Button)findViewById(R.id.button);
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RequestTask task = new RequestTask();
-                task.execute(new String[]{"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=38.990941,-77.4937566&rankedby=distance&types=food&radius=1000&key=AIzaSyB4wT0Q82Hql9pyd-2G_suhrjubYWp_axM"});
+                Log.i("Request thing","https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&rankedby=distance&types=food&radius=1000&key=AIzaSyB4wT0Q82Hql9pyd-2G_suhrjubYWp_axM");
+                task.execute(new String[]{"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + lat + "," + lon + "&rankedby=distance&types=food&radius=1000&key=AIzaSyB4wT0Q82Hql9pyd-2G_suhrjubYWp_axM"});
             }
         });
         try{
@@ -74,6 +80,10 @@ public class HomePage extends Activity {
         }catch (NullPointerException e){
             Log.i("Something","is wrong");
         }
+        mCardContainer = (CardContainer) findViewById(R.id.layoutview);
+        mCardContainer.setOrientation(Orientations.Orientation.Ordered);
+        CardModel card = new CardModel("Title1", "Description goes here", getResources().getDrawable(R.drawable.ic_launcher));
+
 //        mytext.setText(myuser.toString());
 
     }
@@ -84,6 +94,7 @@ public class HomePage extends Activity {
                 // Called when a new location is found by the network location provider.
                 displayLocation(location);
                 curLoc = location;
+                Log.i("Coordinates",curLoc.toString());
                 //doTimeCheck();
             }
             public void onStatusChanged(String provider, int status, Bundle extras) {}
@@ -92,18 +103,24 @@ public class HomePage extends Activity {
 
             public void onProviderDisabled(String provider) {}
         };
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
     }
     public void displayLocation(Location l){
         String loc = "";
+         lon = 0;
+         lat = 0;
         Geocoder gcd = new Geocoder(this, Locale.getDefault());
         try {
             List<Address> addresses = gcd.getFromLocation(l.getLatitude(), l.getLongitude(), 1);
-            if (addresses.size() > 0)
+            if (addresses.size() > 0) {
                 loc = addresses.get(0).getPostalCode();
-            Log.i("City",loc);
+                lon = addresses.get(0).getLongitude();
+                lat = addresses.get(0).getLatitude();
+            }
+            Log.i("Long",lon + "");
+            Log.i("Lat",lat + "");
             locationtext.setText(loc);
-
+            Log.i("Location",loc);
         }catch(IOException e){
 
         }catch(NullPointerException n){

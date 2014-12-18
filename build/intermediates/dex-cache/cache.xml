@@ -2,6 +2,12 @@
 <pre-dex-items>
 
     <item
+        dex="/Users/Anuraag/AndroidStudioProjects/Eatifi/app/build/intermediates/pre-dexed/debug/lombok-1.12.4-72e008cd0fbdfc3d8f61955128ed8b419a20c9fd.jar"
+        jar="/Users/Anuraag/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.12.4/87cff683a77d5cfc7b1af009f0b7df720248755a/lombok-1.12.4.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="87cff683a77d5cfc7b1af009f0b7df720248755a"/>
+    <item
         dex="/Users/Anuraag/AndroidStudioProjects/Eatifi/app/build/intermediates/pre-dexed/debug/bolts-android-1.1.2-9c0d78eb94151bf149b084a121abb9a2eb95d142.jar"
         jar="/Users/Anuraag/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.2/91c20388c9a45f62b5ed8fe0502bb76ff6251fc7/bolts-android-1.1.2.jar"
         jumboMode="false"
@@ -26,6 +32,12 @@
         revision="21.1.1"
         sha1="61cf79e2775b882ac0ea32d60ea2dbbf6f245cea"/>
     <item
+        dex="/Users/Anuraag/AndroidStudioProjects/Eatifi/app/build/intermediates/pre-dexed/debug/classes-bdba17c3bbfbc435864f5ee1755977e268e9290d.jar"
+        jar="/Users/Anuraag/AndroidStudioProjects/Eatifi/app/build/intermediates/exploded-aar/com.github.kikoso/SwipeableCards/1.0-RELEASE/classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="f5038d5b7e5bbc1a94ae5ca073ef5bb317aabbae"/>
+    <item
         dex="/Users/Anuraag/AndroidStudioProjects/Eatifi/app/build/intermediates/pre-dexed/debug/classes-f16fb47c6ef439e89ed14368e32dcef41852d1af.jar"
         jar="/Users/Anuraag/AndroidStudioProjects/Eatifi/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/classes.jar"
         jumboMode="false"
@@ -43,5 +55,11 @@
         jumboMode="false"
         revision="21.1.1"
         sha1="0f6d5c1ef2e982c3b7858408e3df389cf5d202da"/>
+    <item
+        dex="/Users/Anuraag/AndroidStudioProjects/Eatifi/app/build/intermediates/pre-dexed/debug/classes-be7a525206ca9ceee122f2351d22d1b952a7b3f8.jar"
+        jar="/Users/Anuraag/AndroidStudioProjects/Eatifi/app/build/intermediates/exploded-aar/Eatifi/AndTinder/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.1"
+        sha1="82d83fae9e031509a332c03a87ee6b956d5b658f"/>
 
 </pre-dex-items>
